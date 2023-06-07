@@ -2,7 +2,13 @@ import React from "react";
 import {DisplayBalance} from "./index";
 import {Grid, Segment} from "semantic-ui-react";
 
-export default function DisplayBalances() {
+interface IDisplayBalance {
+    totalIncome: number,
+    totalExpense: number
+}
+
+export default function DisplayBalances(props: IDisplayBalance) {
+    const { totalIncome, totalExpense } = props;
     return <Segment textAlign="center">
         <Grid columns={2} divided>
             <Grid.Row>
@@ -10,14 +16,14 @@ export default function DisplayBalances() {
                     <DisplayBalance
                         color="green"
                         label="Income"
-                        value="2,500.54"
+                        value={totalIncome}
                     />
                 </Grid.Column>
                 <Grid.Column>
                     <DisplayBalance
                         color="red"
                         label="Expenses"
-                        value="1,024.00"
+                        value={totalExpense}
                     />
                 </Grid.Column>
             </Grid.Row>
